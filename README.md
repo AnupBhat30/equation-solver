@@ -1,164 +1,149 @@
-# 🤯 CRAZY HANDWRITTEN EQUATION SOLVER 🤯
+# Handwritten Equation Solver
 
 ![Mind Blown](https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif)
 
-## 🚀 What the HECK is this?!
+## Overview
 
-Welcome to the **ULTIMATE HANDWRITTEN EQUATION SOLVER** - the app that turns your chicken scratch into actual MATH! 🐔➗📐
+Welcome to the Handwritten Equation Solver, an AI-powered application that converts handwritten equations into solvable mathematical expressions using a Convolutional Neural Network (CNN) trained on thousands of handwritten digits and operators.
 
-Ever scribbled `2+2=fish` on a napkin and wondered why your calculator laughed at you? Well, wonder no more! This AI-powered monstrosity uses a Convolutional Neural Network (CNN) trained on thousands of handwritten digits and operators to:
+This tool recognizes handwritten input, converts scribbles to equations, solves them, and provides confidence scores for the predictions.
 
-- 📝 **Recognize your terrible handwriting**
-- 🔢 **Convert scribbles to equations**
-- 🧮 **Actually SOLVE them**
-- 🎯 **Give you confidence scores** (because we know you're skeptical)
+## Features
 
-## 🎨 Features That Will Blow Your Mind
+### Drawing Interface
 
-### ✏️ Draw Like a Toddler
+- **Canvas Drawing**: Scribble equations directly in the browser.
+- **Real-time Recognition**: Observe the AI deciphering your handwriting.
+- **Confidence Meter**: View the AI's confidence in recognizing each character.
 
-- **Canvas Drawing**: Scribble equations directly in your browser
-- **Real-time Recognition**: Watch as the AI tries to decipher your hieroglyphics
-- **Confidence Meter**: See how sure the AI is about your artistic masterpiece
+### Image Upload
 
-### 📸 Upload Your Mess
+- **Image Upload**: Upload photos of handwritten equations.
+- **Multi-format Support**: Supports PNG, JPG, and JPEG formats.
+- **Smart Detection**: Identifies individual characters in varied handwriting styles.
 
-- **Image Upload**: Snap a photo of your notebook chaos
-- **Multi-format Support**: PNG, JPG, JPEG - we don't discriminate
-- **Smart Detection**: Finds individual characters even in your tornado handwriting
+### AI Capabilities
 
-### 🧠 AI Magic
+- **CNN-Powered**: Utilizes a Convolutional Neural Network trained on 14 classes (digits 0-9 and operators +, -, ×, ÷).
+- **Character Segmentation**: Separates equations into individual symbols.
+- **Equation Building**: Reconstructs mathematical expressions from recognized components.
+- **Safe Evaluation**: Handles invalid inputs without crashing.
 
-- **CNN-Powered**: Trained on 14 classes (0-9 digits + 4 operators)
-- **Character Segmentation**: Splits your equation into individual symbols
-- **Equation Building**: Reconstructs your math from the pieces
-- **Safe Evaluation**: Won't crash if you write `2++2` (but it'll judge you silently)
+## Tech Stack
 
-## 🛠️ Tech Stack (Because Nerds Care)
+- **Frontend**: Streamlit for web interface.
+- **AI Framework**: TensorFlow/Keras for the CNN model.
+- **Image Processing**: OpenCV for preprocessing.
+- **Drawing Canvas**: streamlit-drawable-canvas for user input.
+- **Math Engine**: Python's eval() for computation.
 
-- **Frontend**: Streamlit (because web dev is hard 😅)
-- **AI Brain**: TensorFlow/Keras CNN
-- **Image Processing**: OpenCV (the unsung hero)
-- **Drawing Canvas**: streamlit-drawable-canvas
-- **Math Engine**: Python's eval() (don't tell anyone)
-
-## 🚀 Quick Start (Don't Overthink It)
+## Quick Start
 
 ### Prerequisites
 
-- Python 3.8+ (we're not savages)
-- A computer (preferably one that works)
+- Python 3.8 or higher.
+- A compatible computer system.
 
 ### Installation
 
 ```bash
-# Clone this masterpiece
+# Clone the repository
 git clone <your-repo-url>
 cd handwritten-equation-solver
 
-# Install dependencies (it's just 6 packages, we kept it lean!)
+# Install dependencies
 pip install -r requirements.txt
 
-# Or if you're fancy with uv:
+# Alternatively, using uv:
 uv pip install -r requirements.txt
 ```
 
-### Run the Magic
+### Running the Application
 
 ```bash
 streamlit run equation_solver.py
 ```
 
-Boom! 🎆 Your app is now running at `http://localhost:8501`
+The application will be available at `http://localhost:8501`.
 
-## 📊 How It Works (The Boring Technical Stuff)
+## How It Works
 
 ### The Model
 
-- **Architecture**: 3 Conv2D layers + MaxPooling + Dropout + Dense layers
-- **Input**: 32x32 grayscale images
-- **Output**: 14 classes (0-9, +, -, ×, ÷)
-- **Training Data**: Custom dataset with ~10k+ images per class
-- **Accuracy**: Somewhere in the 90s% (we don't brag... much)
+- **Architecture**: Consists of 3 Conv2D layers, MaxPooling, Dropout, and Dense layers.
+- **Input**: 32x32 grayscale images.
+- **Output**: 14 classes (0-9, +, -, ×, ÷).
+- **Training Data**: Custom dataset with approximately 10,000 images per class.
+- **Accuracy**: Achieves high accuracy in the 90s percentile.
 
 ### The Pipeline
 
-1. **Image Preprocessing**: Convert to grayscale, threshold, find contours
-2. **Character Segmentation**: Extract individual symbols with padding
-3. **CNN Prediction**: Classify each character
-4. **Equation Assembly**: Sort by position and build the string
-5. **Math Evaluation**: Safely compute the result
+1. **Image Preprocessing**: Convert to grayscale, apply thresholding, and detect contours.
+2. **Character Segmentation**: Extract individual symbols with appropriate padding.
+3. **CNN Prediction**: Classify each character.
+4. **Equation Assembly**: Sort characters by position and construct the equation string.
+5. **Math Evaluation**: Safely compute the result.
 
-## 🎯 Usage Examples
+## Usage Examples
 
 ### Drawing Mode
 
-1. Click "Draw on Canvas"
-2. Scribble `3+5` (or try `2×8` if you're feeling fancy)
-3. Hit "Analyze Drawing"
-4. Watch the AI struggle with your handwriting
-5. Get your answer + confidence scores
+1. Select "Draw on Canvas".
+2. Write an equation such as `3+5` or `2×8`.
+3. Click "Analyze Drawing".
+4. Review the recognized equation, solution, and confidence scores.
 
 ### Upload Mode
 
-1. Take a photo of `7-2×3`
-2. Upload the image
-3. Let the AI work its magic
-4. Profit! (or at least get the answer)
+1. Capture a photo of an equation like `7-2×3`.
+2. Upload the image.
+3. Allow the AI to process and solve the equation.
 
-## 🐛 Known Issues (We Call Them "Features")
+## Known Issues
 
-- **Handwriting Recognition**: Works best with clear, separated characters
-- **Operators**: Sometimes confuses `×` with `+` (hey, they look similar!)
-- **Complex Equations**: Stick to basic arithmetic for now
-- **Division Symbol**: `/` works, but `÷` might need better lighting
+- **Handwriting Recognition**: Performs best with clear, well-separated characters.
+- **Operators**: May occasionally confuse similar-looking operators like `×` and `+`.
+- **Complex Equations**: Currently optimized for basic arithmetic.
+- **Division Symbol**: Recognizes `/` reliably; `÷` may require clearer input.
 
-## 🤝 Contributing (If You're Brave Enough)
+## Contributing
 
-Found a bug? Want to improve the model? Have suggestions?
+To contribute:
 
-1. Fork it
-2. Create your feature branch (`git checkout -b feature/amazing-improvement`)
-3. Commit your changes (`git commit -m 'Add amazing improvement'`)
-4. Push to the branch (`git push origin feature/amazing-improvement`)
-5. Open a Pull Request
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/improvement`).
+3. Commit changes (`git commit -m 'Add improvement'`).
+4. Push to the branch (`git push origin feature/improvement`).
+5. Open a Pull Request.
 
-## 📜 License
+## License
 
-This project is licensed under the **"Do Whatever You Want" License** - see the LICENSE file for details. (Actually, it's MIT, but we like to keep it fun)
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- **TensorFlow/Keras**: For making deep learning accessible
-- **OpenCV**: For image processing wizardry
-- **Streamlit**: For turning Python scripts into web apps
-- **The Dataset**: Whoever collected those thousands of handwritten samples
-- **You**: For reading this far down
+- TensorFlow/Keras for deep learning framework.
+- OpenCV for image processing.
+- Streamlit for web application development.
+- The dataset contributors for training samples.
+- The open-source community for tools and resources.
 
-## 🎉 Final Thoughts
+## Final Thoughts
 
-This project started as a fun experiment and turned into something actually useful! The model training notebook shows the journey from raw data to a working CNN, and the Streamlit app brings it all together in a user-friendly interface.
-
----
-
-## 🎁 **FREE FOR ALL MINI PROJECTS!** 🎁
-
-**Hey fellow developers, students, and curious minds!**
-
-Feel free to use this project for your mini projects, assignments, or just messing around. Seriously - it's not worth wasting time reinventing the wheel if you don't want to learn something new. Take it, modify it, break it, fix it, make it your own!
-
-**Why?** Because:
-
-- ✅ **Complete working example** of CNN + Streamlit
-- ✅ **Real-world application** (handwriting recognition)
-- ✅ **Educational value** (see how AI pipelines work)
-- ✅ **Easy to extend** (add more operators, improve accuracy, etc.)
-- ✅ **No strings attached** - MIT licensed
-
-**Pro tip:** If you're learning ML/AI, the `equation_solver.ipynb` notebook is gold - it shows the complete model training process from data loading to evaluation!
+This project demonstrates the integration of machine learning with web applications for practical handwriting recognition. The training notebook (`equation_solver.ipynb`) provides a complete guide to model development, and the Streamlit app offers an accessible interface.
 
 ---
 
-_Made with ❤️, ☕, and way too many late nights debugging TensorFlow_
+## Educational Use
+
+This project serves as a complete example of CNN implementation with Streamlit for mini projects, assignments, or learning purposes. It includes a real-world application of handwriting recognition with educational value in understanding AI pipelines. The code is MIT licensed and easy to extend.
+
+The `equation_solver.ipynb` notebook is particularly valuable for those learning machine learning, as it details the full model training process.
+
+---
+
+_Made with love, coffee, and way too many late nights debugging TensorFlow_
 
 ![Happy Coding](https://media.giphy.com/media/SWoSkN6DxTszqIKEqv/giphy.gif)
+
+Made for Neural Networks and Deep Learning Lab mini project.
